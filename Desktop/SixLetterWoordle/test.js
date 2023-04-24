@@ -11,4 +11,3 @@ function randomWord() {
     return WORDS[randomIndex];
 }
 
-https://fonts.google.com/specimen/Press+Start+2P?preview.text=Player%201&preview.text_type=custom&query=Press
