@@ -1,0 +1,87 @@
+We are doing the full keyboard
+
+HTML/css notes: 
+    - Create board and text, use colors on vsc theme to get hex code 
+    - Hover over keyboard to 'light up' // 
+    - Hover over start button to 'light up' 
+
+Start the Game
+    -Code start the game button, and when pressed, init the game
+    -Randomly generate word from an array. 
+    - start game button is disabled.
+    - When a letter is put in, highlight the box 
+
+Game turn
+    - code so I can type in the word in the box
+    - When I put in six word, 
+        if not enough letters, message, not enough letters
+        if not on the list , display 'not on the list'
+        if word is on the list 
+            if letter is in the word,
+                highlight the box the letter is in orange 
+            else if letter is in the box and it's the correct placement, turn box red
+    - Code so that i can't move to next line until, i hit enter for current line
+    - Also, i can't go back to previous line once I hit this line.
+
+Win/losing
+    -If all of the boxes are red in a given line. 
+        -The game ends and I cannot add anymore letters 
+        -Message pops up that says that I win! 
+        -Play Again button enables.
+    -If I go through the list and still didn't get the word
+        -The game ends and I cannot add anymore letters 
+        -Message pops up that says that I lose and displays the secret word. 
+        -Play Again button enables.
+
+Bonus: keyboard
+    - pressing the keyboard, allows me to type in letter to the board.
+    - changes colors once I enter a word.
+        -red for correct
+        -orange for on the board 
+        -shade out for not on the board or word.
+
+
+strategy: listen to keyboard clicks, this is an event 
+
+
+Flow:
+- create state variables
+                -secretword
+                -win state 
+                -error message
+                -player word
+            
+- create init: 
+    -secretWord = function secret word
+    -error message = ""
+    -win = null
+        -win condition has a message 
+        - lose also has message in the same spot 
+    - all board rows should be ""
+    - player word = ""
+    - disable button 
+
+- render function //think of render as updates
+    -render board 
+        -check where we should type
+    -render message
+
+
+-not sure if we have any CONSTANTS
+
+-create our keyboard.
+    -inspiration tic tac toe
+    -create a button with keyboard id
+    -this might be part of the whole event 
+
+-turn
+    -use event handler (don't forgety evt.target)
+    - don't forget the guards (maybe evtTarget.tagname !== 'BUTTON' ) return;
+    -might also use a evt.traget.innerText
+    -remember to change winner. 
+    -finish with render 
+
+-getWinner
+    -if our word is same as secret word 
+    -change messages
+    -enable play again 

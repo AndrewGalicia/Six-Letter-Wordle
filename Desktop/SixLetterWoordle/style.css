@@ -1,0 +1,144 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #11042D;    
+    color: #d6ff94;
+    font-family: 'Press Start 2P';
+}
+
+header {
+    border-bottom: solid #D6FF94;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Great Vibes', cursive;
+    font-size: 75px;
+    margin-bottom: 10px;
+}
+
+#error {
+    font-size: 25px;
+}
+
+.row {
+    display: flex;
+    font-family: 'Press Start 2P';
+    align-items: center;
+    justify-content: center;
+}
+
+#box {
+    background-color: violet;
+    height: 50px;
+    width: 50px;
+    border: solid #11042D;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    font-family: 'Press Start 2P';
+}
+
+#keyboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.keys {
+    background-color: #7166f2 ;
+    border: blue;
+    border-radius: 10%;
+    margin: 1px;
+    height: 35px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.keys:hover{
+    margin: 5px;
+    color: #D6FF94;
+    height: 45px;
+    width: 40px;
+    background-color: blueviolet;
+    border: solid red; 
+    cursor: pointer;
+}
+
+.rules {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    ;
+}
+
+#start {
+    
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: yellow;
+    font-size: 25px;
+    color: red;
+    cursor: pointer;
+}
+
+#start:disabled {
+    background-color: lightblue;
+    color: aqua;
+}
+
+#start:hover:not(:disabled) {
+    border: 0.2vmin solid rgb(199, 56, 173);
+    box-shadow: 0 0 4px 4px rgb(199, 56, 173);
+    background-color: rgba(72, 0, 138, 0.59);
+    color: yellowgreen
+}
+
+h2 {
+    margin-top: -50px;
+    padding-top: 0px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P';
+    font-size: 40px;
+}
+
+#button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+#button > button {
+    margin: 5px;
+    color: #D6FF94;
+    height: 60px;
+    width: 100px;
+    background-color: blueviolet;
+    border: solid red; 
+}
+
+#button > button:hover {
+    border: 0.2vmin solid rgb(199, 56, 173);
+    box-shadow: 0 0 4px 4px rgb(199, 56, 173);
+    background-color: rgba(72, 0, 138, 0.59);
+    color: yellowgreen; 
+    cursor: pointer;
+}
+
+

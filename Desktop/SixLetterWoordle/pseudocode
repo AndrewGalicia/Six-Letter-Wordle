@@ -1,0 +1,40 @@
+HTML notes: 
+    - Create board and text, use colors on vsc theme to get hex code 
+    - Hover over keyboard to 'light up' // 
+
+Start the Game
+    -Code start the game button, and when pressed, init the game
+    -Randomly generate word from an array. 
+    - start game button is disabled.
+    - When a letter is put in, highlight the box 
+
+Game turn
+    - code so I can type in the word in the box
+    - When I put in six word, 
+        if not enough letters, message, not enough letters
+        if not on the list , display 'not on the list'
+        if word is on the list 
+            if letter is in the word,
+                highlight the box the letter is in orange 
+            else if
+                letter is in the box and it's the correct placement,
+                turn box red
+    - Code so that i can't move to next line until, i hit enter for current line
+    - Also, i can't go back to previous line once I hit this line.
+
+Win/losing
+    -If all of the boxes are red in a given line. 
+        -The game ends and I cannot add anymore letters 
+        -Message pops up that says that I win! 
+        -Play Again button enables.
+    -If I go through the list and still didn't get the word
+        -The game ends and I cannot add anymore letters 
+        -Message pops up that says that I lose and displays the secret word. 
+    - 
+
+
+Flow:
+- create state variables
+                -secretword
+                -win message
+                -error message
