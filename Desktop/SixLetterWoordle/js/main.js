@@ -27,12 +27,15 @@ let colNum      //column in html
 
   const startButton = document.getElementById('start');
   const gameOverEl = document.querySelector('h2');
-
+  const enterButton = document.getElementById('enter');
+  const clearButton = document.getElementById('clear');
 
   /*----- event listeners -----*/
 
+  enterButton.addEventListener('click', enter);
   startButton.addEventListener('click', init);
-  errorMessage = document.querySelector('error')
+  clearButton.addEventListener('click', clear);
+  errorMessage = document.querySelector('error');
   document.getElementById('keyboard').addEventListener('click', type);
 
   /*----- functions -----*/
@@ -71,7 +74,7 @@ function type(evt) {
     console.log('type working')
 
 
-    if (colNum < 6) {
+    if (colNum <= 6) {
         document.getElementById(`${boxNum}`).innerText = letter;
         colNum += 1 ;
     } else {
@@ -79,6 +82,15 @@ function type(evt) {
     }
 }
 
+function enter(evt) {
+    console.log('enter button works')
+    console.log(evt.target);
+}
+
+function clear(evt) {
+    console.log('clear button works')
+    console.log(evt.target)
+}
 //helper function to create random word on init
 function randomWord() {
     const randomIndex = Math.floor(Math.random() * WORDS.length);
