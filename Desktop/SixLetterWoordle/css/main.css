@@ -36,7 +36,7 @@ header {
     justify-content: center;
 }
 
-#box {
+.box {
     background-color: violet;
     height: 50px;
     width: 50px;

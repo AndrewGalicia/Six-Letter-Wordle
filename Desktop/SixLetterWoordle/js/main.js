@@ -19,6 +19,8 @@ let winState    //W or L, located in "h2"
 let errorMessage//Not in the list or Word to short? id = "header"
 let playerWord  //Player inputed word
 let board       //6 x 6 grid
+let rowNum      //row in html
+let colNum      //column in html  
 
 
   /*----- cached elements  -----*/
@@ -30,7 +32,7 @@ let board       //6 x 6 grid
   /*----- event listeners -----*/
 
   startButton.addEventListener('click', init);
-  document.querySelector
+  errorMessage = document.querySelector('error')
   document.getElementById('keyboard').addEventListener('click', type);
 
   /*----- functions -----*/
@@ -54,13 +56,27 @@ let board       //6 x 6 grid
 
     secreWord = randomWord(); 
 
+    rowNum = 5;
+
+    colNum = 0;
+
+
     render();
   }
 
 //Playing the game functions
 function type(evt) {
-    console.log(evt.target.innerText);
+    let boxNum = rowNum.toString() + colNum.toString()    
+    let letter = evt.target.innerText;
     console.log('type working')
+
+
+    if (colNum < 6) {
+        document.getElementById(`${boxNum}`).innerText = letter;
+        colNum += 1 ;
+    } else {
+        errorMessage.innerText = "Only 6 letter please!"
+    }
 }
 
 //helper function to create random word on init
