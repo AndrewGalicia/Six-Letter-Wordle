@@ -79,9 +79,16 @@ function type(evt) {
         document.getElementById(`${boxNum}`).innerText = letter;
         colNum += 1 ;
     }
-  
+}
 
-
+function clear() {
+    console.log('clear button works')
+    let boxNum = rowNum.toString() + colNum.toString();
+    if (colNum >= 1) {
+        colNum -= 1;
+        boxNum = rowNum.toString() + colNum.toString();
+        document.getElementById(`${boxNum}`).innerText = null;  
+    }
 }
 
 function enter(evt) {
@@ -89,10 +96,6 @@ function enter(evt) {
     console.log(evt.target);
 }
 
-function clear(evt) {
-    console.log('clear button works')
-    console.log(evt.target)
-}
 //helper function to create random word on init
 function randomWord() {
     const randomIndex = Math.floor(Math.random() * WORDS.length);
@@ -137,3 +140,5 @@ function renderControls() {
         startButton.disabled = false
     }
 }
+
+//bugs to fix...the clear button
