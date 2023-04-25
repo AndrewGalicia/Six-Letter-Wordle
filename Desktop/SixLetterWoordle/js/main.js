@@ -35,7 +35,7 @@ let colNum      //column in html
   enterButton.addEventListener('click', enter);
   startButton.addEventListener('click', init);
   clearButton.addEventListener('click', clear);
-  errorMessage = document.querySelector('error');
+  errorMessage = document.getElementById('error');
   document.getElementById('keyboard').addEventListener('click', type);
 
   /*----- functions -----*/
@@ -53,7 +53,7 @@ let colNum      //column in html
 
     winState = null;
 
-    errorMessage = '';
+    errorMessage.innerText = null;
 
     playerWord = '';
 
@@ -73,13 +73,15 @@ function type(evt) {
     let letter = evt.target.innerText;
     console.log('type working')
 
-
-    if (colNum <= 6) {
+    if (colNum === 6) {
+        errorMessage.innerText = 'Only 6 letters only please!';
+    } else {
         document.getElementById(`${boxNum}`).innerText = letter;
         colNum += 1 ;
-    } else {
-        errorMessage.innerText = "Only 6 letter please!"
     }
+  
+
+
 }
 
 function enter(evt) {
