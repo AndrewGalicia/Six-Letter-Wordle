@@ -15,13 +15,14 @@ let winState    //W or L, located in "h2"
 let playerWord  //Player inputed word. Updated during enterButton event.
 let rowNum      //row number, button 0 - top 5, decreased on succesful enterButton event
 let colNum      //column number 0-5 left to right. resets to zero on succesful enterButton event 
-
+let boxNum
   /*----- cached elements  -----*/
   const startButton = document.getElementById('start'); 
   const enterButton = document.getElementById('enter');  
   const clearButton = document.getElementById('clear');  
   const gameOverEl = document.querySelector('h2');       
   const errorMessage = document.getElementById('error'); //errors mesasge e.g 'word not on list'
+  const typedWord = [...document.querySelectorAll('.keys')]
   /*----- event listeners -----*/
 
   enterButton.addEventListener('click', enter); //checks playerWord, winState, resets colNum to zero, lowers rowNum, render
@@ -47,12 +48,16 @@ let colNum      //column number 0-5 left to right. resets to zero on succesful e
 
     colNum = 0;
 
+    boxNum = rowNum.toString() + colNum.toString()  
+
     render();
   }
 //Playing the game functions
     //keyboard event to place letter on board
 function type(evt) {
-    let boxNum = rowNum.toString() + colNum.toString()    
+    if (typedWord.indexOf(evt.target) === -1) return;
+
+    boxNum = rowNum.toString() + colNum.toString()    
     let letter = evt.target.innerText;
     if (colNum === 6) {
         errorMessage.innerText = 'Only 6 letters please!';
@@ -64,7 +69,6 @@ function type(evt) {
     //enter button event. Checks if we won else, moves to next row.
 function enter() {
     if (colNum === 6 && checkWord()) {
-        errorMessage.innerText = 'Success!!';
         rowNum -= 1;
         colNum = 0;
         checkWin();
@@ -79,8 +83,8 @@ function enter() {
 function checkWord() {
     let word = '';
     for (let i = 0; i < 6; i++) {
-        let boxNum = rowNum.toString() + i.toString();
-        word += document.getElementById(`${boxNum}`).innerText;
+        let altBoxNum = rowNum.toString() + i.toString();
+        word += document.getElementById(`${altBoxNum}`).innerText;
     }
 
     if (WORDS.includes(word)) {
@@ -94,7 +98,7 @@ function checkWord() {
 function clear() {
     if (colNum >= 1) {
         colNum -= 1;
-        let boxNum = rowNum.toString() + colNum.toString();
+        boxNum = rowNum.toString() + colNum.toString();
         document.getElementById(`${boxNum}`).innerText = null;  
     }
 }
@@ -102,9 +106,9 @@ function clear() {
 function clearBoard() {
     for (let i = 0; i < 6; i++) {
         for (let j = 0; j < 6; j++) {
-            let boxNum = i.toString() + j.toString();
-            document.getElementById(`${boxNum}`).innerText = null; //clears letters
-            document.getElementById(`${boxNum}`).style.backgroundColor = '#c738ad'; //clears colors
+            let altBoxNum = i.toString() + j.toString();
+            document.getElementById(`${altBoxNum}`).innerText = null; //clears letters
+            document.getElementById(`${altBoxNum}`).style.backgroundColor = '#c738ad'; //clears colors
         }
     }
 }
@@ -145,8 +149,8 @@ function renderBoard() {
         for (let i = 0; i < 6; i++) {
             playerCha = playerWord[i];
             let prevRowNum = rowNum + 1;
-            let boxNum = prevRowNum.toString() + i.toString();
-            boxEle =document.getElementById(`${boxNum}`);
+            let altBoxNum = prevRowNum.toString() + i.toString();
+            boxEle = document.getElementById(`${altBoxNum}`);
 
             if (secreWord.includes(playerCha) && playerCha === secreWord[i]) {
                 boxEle.style.backgroundColor = 'red';
