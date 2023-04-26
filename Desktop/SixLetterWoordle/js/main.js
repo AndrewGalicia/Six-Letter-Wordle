@@ -1,5 +1,5 @@
   /*----- constants -----*/
-const WORDS = ['SEARCH', 'ONLINE', 'PEOPLE', 'HEALTH', 'SHOULD', 'SYSTEM', 'POLICY', 'NUMBER', 'PLEASE', 'RIGHTS', 'PUBLIC', 'SCHOOL', 'REVIEW',
+const WORDS = ['AAAAAA','SEARCH', 'ONLINE', 'PEOPLE', 'HEALTH', 'SHOULD', 'SYSTEM', 'POLICY', 'NUMBER', 'PLEASE', 'RIGHTS', 'PUBLIC', 'SCHOOL', 'REVIEW',
 'UNITED', 'CENTER', 'TRAVEL', 'REPORT', 'MEMBER', 'BEFORE', 'HOTELS', 'OFFICE', 'DESIGN', 'POSTED', 'WITHIN', 'STATES', 'FAMILY', 'PRICES', 'SPORTS', 'COUNTY', 'ACCESS',
 'CHANGE', 'RATING', 'DURING', 'RETURN', 'EVENTS', 'LITTLE', 'MOVIES', 'SOURCE', 'AUTHOR', 'AROUND', 'COURSE', 'CANADA', 'CREDIT', 'ESTATE', 'SELECT',
 'PHOTOS', 'THREAD', 'MARKET', 'REALLY', 'ACTION', 'SERIES', 'SECOND', 'FORUMS', 'BETTER', 'FRIEND', 'SERVER', 'ISSUES', 'STREET', 'THINGS', 'PERSON',
@@ -42,6 +42,7 @@ let colNum      //column in html
   
 //initialize all states, then call render 
   function init() {
+    clearBoard();
     board = [
     [0,0,0,0,0,0],
     [0,0,0,0,0,0],
@@ -105,6 +106,7 @@ function enter() {
     render();
 }
 
+//checks to see if the typed word is in the word bank
 function checkWord() {
     let word = '';
     
@@ -119,6 +121,17 @@ function checkWord() {
     } else {
         return false;
     };
+}
+
+//function clears the board by iterating through all the boxes and setting them to null;
+function clearBoard() {
+    for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < 6; j++) {
+            let boxNum = i.toString() + j.toString();
+            console.log(boxNum);
+            document.getElementById(`${boxNum}`).innerText = null
+        }
+    }
 }
 
 //helper function to create random word on init
@@ -168,4 +181,3 @@ function renderControls() {
     }
 }
 
-//bugs to fix...the clear button
