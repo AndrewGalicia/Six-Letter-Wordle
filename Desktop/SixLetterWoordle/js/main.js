@@ -44,15 +44,7 @@ let colNum      //column in html
 //initialize all states, then call render 
   function init() {
     clearBoard();
-    board = [
-    [0,0,0,0,0,0],
-    [0,0,0,0,0,0],
-    [0,0,0,0,0,0],
-    [0,0,0,0,0,0],
-    [0,0,0,0,0,0],
-    [0,0,0,0,0,0]
-    ];
-
+   
     winState = null;
 
     errorMessage.innerText = null;
@@ -130,7 +122,8 @@ function clearBoard() {
         for (let j = 0; j < 6; j++) {
             let boxNum = i.toString() + j.toString();
             console.log(boxNum);
-            document.getElementById(`${boxNum}`).innerText = null
+            document.getElementById(`${boxNum}`).innerText = null;
+            document.getElementById(`${boxNum}`).style.backgroundColor = '#c738ad';
         }
     }
 }
