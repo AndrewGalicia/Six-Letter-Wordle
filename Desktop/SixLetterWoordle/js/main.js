@@ -92,10 +92,9 @@ function checkWord() {
 }
     //backspace button
 function clear() {
-    let boxNum = rowNum.toString() + colNum.toString();
     if (colNum >= 1) {
         colNum -= 1;
-        boxNum = rowNum.toString() + colNum.toString();
+        let boxNum = rowNum.toString() + colNum.toString();
         document.getElementById(`${boxNum}`).innerText = null;  
     }
 }
@@ -104,7 +103,6 @@ function clearBoard() {
     for (let i = 0; i < 6; i++) {
         for (let j = 0; j < 6; j++) {
             let boxNum = i.toString() + j.toString();
-            console.log(boxNum);
             document.getElementById(`${boxNum}`).innerText = null; //clears letters
             document.getElementById(`${boxNum}`).style.backgroundColor = '#c738ad'; //clears colors
         }
