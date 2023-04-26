@@ -10,7 +10,8 @@ const WORDS = ['AAAAAA','SEARCH', 'ONLINE', 'PEOPLE', 'HEALTH', 'SHOULD', 'SYSTE
 const COLORS = {
     '0' : 'violet',
     '1' : 'orange',
-    '-1': 'red'
+    '-1': 'red',
+    '2' : 'grey'
 }
 
   /*----- state variables -----*/
@@ -149,7 +150,6 @@ function checkWin () {
     }
 }
 
-
 //render functions below
 function render() {
     console.log("working");
@@ -159,9 +159,7 @@ function render() {
     renderControls();
 }
 
-
 function renderMessage() {
-    console.log("render message working");
     if (winState === 'w') {
         gameOverEl.innerText = `You Win!`; 
     } else if (winState === 'l') {
@@ -171,13 +169,30 @@ function renderMessage() {
     }
 }
 
+//changes colors
 function renderBoard() {
-    console.log("render board working")
+    console.log("render board start working")
+    if (rowNum < 5) {
+        for (let i = 0; i < 6; i++) {
+            playerCha = playerWord[i];
+            let prevRowNum = rowNum + 1;
+            let boxNum = prevRowNum.toString() + i.toString();
+            boxEle =document.getElementById(`${boxNum}`);
+            if (secreWord.includes(playerCha) && playerCha === secreWord[i]) {
+                boxEle.style.backgroundColor = 'red'
+            } else if (secreWord.includes(playerCha)) {
+                boxEle.style.backgroundColor = 'orange'
+            } else {
+                boxEle.style.backgroundColor = 'gray'
+            }
+        }
+    }
+    console.log('render finished working');
 }
 
 function renderControls() {
     if (winState) {
-        startButton.disabled = false
+        startButton.disabled = false;
     }
 }
 
