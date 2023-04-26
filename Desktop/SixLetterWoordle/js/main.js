@@ -1,11 +1,11 @@
   /*----- constants -----*/
-const WORDS = ['search','online','people','health','should','system','policy','number','please','rights','public','school','review',
-'united','center','travel','report','member','before','hotels','office','design','posted','within','states','family','prices','sports','county','access',
-'change','rating','during','return','events','little','movies','source','author','around','course','canada','credit','estate','select',
-'photos','thread','market','really','action','series','second','forums','better','friend','server','issues','street','things','person',
-'mobile','offers','recent','stores','memory','social','august','create','single','latest','status','browse','seller',
-'always','result','groups','making','future','london','become','garden','listed','energy','images','notice','others','format',
-'months','safety','having','common','living','called','period','window','france','region','island','record','direct' ]
+const WORDS = ['SEARCH', 'ONLINE', 'PEOPLE', 'HEALTH', 'SHOULD', 'SYSTEM', 'POLICY', 'NUMBER', 'PLEASE', 'RIGHTS', 'PUBLIC', 'SCHOOL', 'REVIEW',
+'UNITED', 'CENTER', 'TRAVEL', 'REPORT', 'MEMBER', 'BEFORE', 'HOTELS', 'OFFICE', 'DESIGN', 'POSTED', 'WITHIN', 'STATES', 'FAMILY', 'PRICES', 'SPORTS', 'COUNTY', 'ACCESS',
+'CHANGE', 'RATING', 'DURING', 'RETURN', 'EVENTS', 'LITTLE', 'MOVIES', 'SOURCE', 'AUTHOR', 'AROUND', 'COURSE', 'CANADA', 'CREDIT', 'ESTATE', 'SELECT',
+'PHOTOS', 'THREAD', 'MARKET', 'REALLY', 'ACTION', 'SERIES', 'SECOND', 'FORUMS', 'BETTER', 'FRIEND', 'SERVER', 'ISSUES', 'STREET', 'THINGS', 'PERSON',
+'MOBILE', 'OFFERS', 'RECENT', 'STORES', 'MEMORY', 'SOCIAL', 'AUGUST', 'CREATE', 'SINGLE', 'LATEST', 'STATUS', 'BROWSE', 'SELLER',
+'ALWAYS', 'RESULT', 'GROUPS', 'MAKING', 'FUTURE', 'LONDON', 'BECOME', 'GARDEN', 'LISTED', 'ENERGY', 'IMAGES', 'NOTICE', 'OTHERS', 'FORMAT',
+'MONTHS', 'SAFETY', 'HAVING', 'COMMON', 'LIVING', 'CALLED', 'PERIOD', 'WINDOW', 'FRANCE', 'REGION', 'ISLAND', 'RECORD', 'DIRECT']
 
 const COLORS = {
     '0' : 'violet',
@@ -74,7 +74,7 @@ function type(evt) {
     console.log('type working')
 
     if (colNum === 6) {
-        errorMessage.innerText = 'Only 6 letters only please!';
+        errorMessage.innerText = 'Only 6 letters please!';
     } else {
         document.getElementById(`${boxNum}`).innerText = letter;
         colNum += 1 ;
@@ -91,9 +91,34 @@ function clear() {
     }
 }
 
-function enter(evt) {
-    console.log('enter button works')
-    console.log(evt.target);
+function enter() {
+    if (colNum === 6 && checkWord()) {
+        errorMessage.innerText = 'Success!!';
+        rowNum -= 1;
+        colNum = 0;
+        checkWin();
+    } else if (colNum < 6) {
+        errorMessage.innerText = 'Not enough letters!!';
+    } else {
+        errorMessage.innerText = 'Word not on the list ';
+    }
+    render();
+}
+
+function checkWord() {
+    let word = '';
+    
+    for (let i = 0; i < 6; i++) {
+        let boxNum = rowNum.toString() + i.toString();
+        word += document.getElementById(`${boxNum}`).innerText
+    }
+    console.log(word);
+    if (WORDS.includes(word)) {
+        playerWord = word;
+        return true;
+    } else {
+        return false;
+    };
 }
 
 //helper function to create random word on init
@@ -105,7 +130,9 @@ function randomWord() {
 //winState functions
 function checkWin () {
     if (playerWord === secreWord) {
-        winState = 'w';
+        return winState = 'w';
+    } else if (rowNum === -1) {
+        return winState = 'l';
     }
 }
 

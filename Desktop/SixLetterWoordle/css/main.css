@@ -20,9 +20,10 @@ header {
     width: 100%;
     display: flex;
     justify-content: center;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Press Start 2P';
     font-size: 75px;
     margin-bottom: 10px;
+    outline: solid red;
 }
 
 #error {
