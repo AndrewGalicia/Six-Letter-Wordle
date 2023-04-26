@@ -1,4 +1,6 @@
   /*----- constants -----*/
+
+//word bank, all capital letters
 const WORDS = ['AAAAAA','SEARCH', 'ONLINE', 'PEOPLE', 'HEALTH', 'SHOULD', 'SYSTEM', 'POLICY', 'NUMBER', 'PLEASE', 'RIGHTS', 'PUBLIC', 'SCHOOL', 'REVIEW',
 'UNITED', 'CENTER', 'TRAVEL', 'REPORT', 'MEMBER', 'BEFORE', 'HOTELS', 'OFFICE', 'DESIGN', 'POSTED', 'WITHIN', 'STATES', 'FAMILY', 'PRICES', 'SPORTS', 'COUNTY', 'ACCESS',
 'CHANGE', 'RATING', 'DURING', 'RETURN', 'EVENTS', 'LITTLE', 'MOVIES', 'SOURCE', 'AUTHOR', 'AROUND', 'COURSE', 'CANADA', 'CREDIT', 'ESTATE', 'SELECT',
@@ -7,84 +9,59 @@ const WORDS = ['AAAAAA','SEARCH', 'ONLINE', 'PEOPLE', 'HEALTH', 'SHOULD', 'SYSTE
 'ALWAYS', 'RESULT', 'GROUPS', 'MAKING', 'FUTURE', 'LONDON', 'BECOME', 'GARDEN', 'LISTED', 'ENERGY', 'IMAGES', 'NOTICE', 'OTHERS', 'FORMAT',
 'MONTHS', 'SAFETY', 'HAVING', 'COMMON', 'LIVING', 'CALLED', 'PERIOD', 'WINDOW', 'FRANCE', 'REGION', 'ISLAND', 'RECORD', 'DIRECT']
 
-const COLORS = {
-    '0' : 'violet',
-    '1' : 'orange',
-    '-1': 'red',
-    '2' : 'grey'
-}
-
   /*----- state variables -----*/
 let secreWord   //The answer, created using a random word generator
 let winState    //W or L, located in "h2"
-let errorMessage//Not in the list or Word to short? id = "header"
-let playerWord  //Player inputed word
-let board       //6 x 6 grid
-let rowNum      //row in html
-let colNum      //column in html  
-
+let playerWord  //Player inputed word. Updated during enterButton event.
+let rowNum      //row number, button 0 - top 5, decreased on succesful enterButton event
+let colNum      //column number 0-5 left to right. resets to zero on succesful enterButton event 
 
   /*----- cached elements  -----*/
-
-  const startButton = document.getElementById('start');
-  const gameOverEl = document.querySelector('h2');
-  const enterButton = document.getElementById('enter');
-  const clearButton = document.getElementById('clear');
-
+  const startButton = document.getElementById('start'); 
+  const enterButton = document.getElementById('enter');  
+  const clearButton = document.getElementById('clear');  
+  const gameOverEl = document.querySelector('h2');       
+  const errorMessage = document.getElementById('error'); //errors mesasge e.g 'word not on list'
   /*----- event listeners -----*/
 
-  enterButton.addEventListener('click', enter);
-  startButton.addEventListener('click', init);
-  clearButton.addEventListener('click', clear);
-  errorMessage = document.getElementById('error');
+  enterButton.addEventListener('click', enter); //checks playerWord, winState, resets colNum to zero, lowers rowNum, render
+  startButton.addEventListener('click', init);  //inits game
+  clearButton.addEventListener('click', clear); //backspace button
   document.getElementById('keyboard').addEventListener('click', type);
 
   /*----- functions -----*/
   
 //initialize all states, then call render 
   function init() {
-    clearBoard();
+    clearBoard();       //resets the board from a previous game
    
-    winState = null;
+    winState = null;    
 
     errorMessage.innerText = null;
 
     playerWord = '';
 
-    secreWord = randomWord(); 
+    secreWord = randomWord(); //sets the word we are trying to guess;
 
     rowNum = 5;
 
     colNum = 0;
 
-
     render();
   }
-
 //Playing the game functions
+    //keyboard event to place letter on board
 function type(evt) {
     let boxNum = rowNum.toString() + colNum.toString()    
     let letter = evt.target.innerText;
-    console.log('type working')
-
     if (colNum === 6) {
         errorMessage.innerText = 'Only 6 letters please!';
     } else {
         document.getElementById(`${boxNum}`).innerText = letter;
-        colNum += 1 ;
+        colNum += 1;
     }
 }
-
-function clear() {
-    console.log('clear button works')
-    let boxNum = rowNum.toString() + colNum.toString();
-    if (colNum >= 1) {
-        colNum -= 1;
-        boxNum = rowNum.toString() + colNum.toString();
-        document.getElementById(`${boxNum}`).innerText = null;  
-    }
-}
-
+    //enter button event. Checks if we won else, moves to next row.
 function enter() {
     if (colNum === 6 && checkWord()) {
         errorMessage.innerText = 'Success!!';
@@ -94,47 +71,51 @@ function enter() {
     } else if (colNum < 6) {
         errorMessage.innerText = 'Not enough letters!!';
     } else {
-        errorMessage.innerText = 'Word not on the list ';
+        errorMessage.innerText = 'Word not on the list';
     }
     render();
 }
-
-//checks to see if the typed word is in the word bank
+    //boolean; checks to see if the typed word is in the word bank
 function checkWord() {
     let word = '';
-    
     for (let i = 0; i < 6; i++) {
         let boxNum = rowNum.toString() + i.toString();
-        word += document.getElementById(`${boxNum}`).innerText
+        word += document.getElementById(`${boxNum}`).innerText;
     }
-    console.log(word);
+
     if (WORDS.includes(word)) {
         playerWord = word;
         return true;
     } else {
         return false;
-    };
+    }
 }
-
-//function clears the board by iterating through all the boxes and setting them to null;
+    //backspace button
+function clear() {
+    let boxNum = rowNum.toString() + colNum.toString();
+    if (colNum >= 1) {
+        colNum -= 1;
+        boxNum = rowNum.toString() + colNum.toString();
+        document.getElementById(`${boxNum}`).innerText = null;  
+    }
+}
+    //function clears the board by iterating through all the boxes and setting them to null;
 function clearBoard() {
     for (let i = 0; i < 6; i++) {
         for (let j = 0; j < 6; j++) {
             let boxNum = i.toString() + j.toString();
             console.log(boxNum);
-            document.getElementById(`${boxNum}`).innerText = null;
-            document.getElementById(`${boxNum}`).style.backgroundColor = '#c738ad';
+            document.getElementById(`${boxNum}`).innerText = null; //clears letters
+            document.getElementById(`${boxNum}`).style.backgroundColor = '#c738ad'; //clears colors
         }
     }
 }
-
-//helper function to create random word on init
+    //randomly selects word from WORD bank and sets as secret word
 function randomWord() {
     const randomIndex = Math.floor(Math.random() * WORDS.length);
     return WORDS[randomIndex];
 }
-
-//winState functions
+    //checks if there is a winner or loser. 
 function checkWin () {
     if (playerWord === secreWord) {
         return winState = 'w';
@@ -142,47 +123,44 @@ function checkWin () {
         return winState = 'l';
     }
 }
-
-//render functions below
+//render functions below!!
+    //main render button
 function render() {
-    console.log("working");
-    renderMessage(); 
-    renderBoard();
-    startButton.disabled = true;
-    renderControls();
+    renderMessage(); //win or lose message
+    renderBoard();   //updates the box colors
+    startButton.disabled = true; //disable upon init;
+    renderControls(); //enables startButton upon game over!
 }
-
+    //changes message depending on winState
 function renderMessage() {
     if (winState === 'w') {
         gameOverEl.innerText = `You Win!`; 
     } else if (winState === 'l') {
         gameOverEl.innerText = `You Lose`;
     } else {
-        gameOverEl.innerText = `"Guess the Word"`;
+        gameOverEl.innerText = `${rowNum + 1} guesses left`;
     }
 }
-
-//changes colors
+    //changes colors
 function renderBoard() {
-    console.log("render board start working")
-    if (rowNum < 5) {
+    if (rowNum < 5) { //don't check on first row
         for (let i = 0; i < 6; i++) {
             playerCha = playerWord[i];
             let prevRowNum = rowNum + 1;
             let boxNum = prevRowNum.toString() + i.toString();
             boxEle =document.getElementById(`${boxNum}`);
+
             if (secreWord.includes(playerCha) && playerCha === secreWord[i]) {
-                boxEle.style.backgroundColor = 'red'
+                boxEle.style.backgroundColor = 'red';
             } else if (secreWord.includes(playerCha)) {
-                boxEle.style.backgroundColor = 'orange'
+                boxEle.style.backgroundColor = 'orange';
             } else {
-                boxEle.style.backgroundColor = 'gray'
+                boxEle.style.backgroundColor = 'gray';
             }
         }
     }
-    console.log('render finished working');
 }
-
+    //enables button when winState is not null;
 function renderControls() {
     if (winState) {
         startButton.disabled = false;
