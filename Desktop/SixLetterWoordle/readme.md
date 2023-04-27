@@ -12,6 +12,12 @@ At it's core, this game is a guessing game.
 - If the box color turns orange, the letter is inside the secret word, if it turns red then you also have the correct placement.
 -If you correctly guess the word in 6 tries, you win, else you lose.
 
+## Screenshots
+
+ [Imgur](https://i.imgur.com/Zq7fgrj.png)
+ [Imgur](https://i.imgur.com/Zq7fgrj.png)
+ [Imgur](https://i.imgur.com/NMwUlg9.png)
+
 ## Technologies used
 
 - HTML
