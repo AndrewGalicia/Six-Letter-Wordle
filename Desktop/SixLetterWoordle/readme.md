@@ -22,7 +22,8 @@ At it's core, this game is a guessing game.
 ## Getting Started
 
 click on the link below
-<https://AndrewGalicia.github.io/Six-Letter-Wordle/>
+
+<https://andrewgalicia.github.io/Six-Letter-Wordle/Desktop/SixLetterWoordle/>
 
 ## Next Steps
 
