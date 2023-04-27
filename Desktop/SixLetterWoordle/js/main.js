@@ -127,9 +127,9 @@ function render() {
     //changes message depending on winState
 function renderMessage() {
     if (winState === 'w') {
-        gameOverEl.innerText = `You Win!`; 
+        gameOverEl.innerText = `YOU WIN!`; 
     } else if (winState === 'l') {
-        gameOverEl.innerText = `You Lose`;
+        gameOverEl.innerText = `YOU LOSE!`;
     } else {
         gameOverEl.innerText = `${rowNum + 1} guesses left`;
     }

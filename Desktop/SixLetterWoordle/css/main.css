@@ -27,17 +27,6 @@ header {
     text-shadow: 3px 3px 2px  red;  
 }
 
-h2 {
-    margin-top: -50px;
-    padding-top: 0px ;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Press Start 2P';
-    font-size: 40px;
-    text-shadow: 3px 1px 2px  red;
-}
-
 .row {
     display: flex;
     font-family: 'Press Start 2P';
@@ -85,8 +74,18 @@ h2 {
     border: solid red; 
     cursor: pointer;
 }
+#win-state-message {
+    margin-top: -50px;
+    padding-top: 0px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P';
+    font-size: 40px;
+    text-shadow: 3px 1px 2px  red;
+}
 
-#error {
+#error-message {
     font-size: 25px;
     text-shadow: 3px 1px 2px  red;
 }
