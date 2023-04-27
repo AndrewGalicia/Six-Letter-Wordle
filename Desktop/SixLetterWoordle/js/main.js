@@ -149,7 +149,7 @@ function renderBoard() {
             } else if (secreWord.includes(playerCha)) {
                 boxEle.style.backgroundColor = 'orange';
             } else {
-                boxEle.style.backgroundColor = 'light-gray';
+                boxEle.style.backgroundColor = 'gray';
             }
 
             i++;
