@@ -12,12 +12,6 @@ At it's core, this game is a guessing game.
 - If the box color turns orange, the letter is inside the secret word, if it turns red then you also have the correct placement.
 -If you correctly guess the word in 6 tries, you win, else you lose.
 
-## Screenshots
-
- ![Imgur](https://i.imgur.com/Zq7fgrj.png)
- ![Imgur](https://i.imgur.com/Zq7fgrj.png)
- ![Imgur](https://i.imgur.com/NMwUlg9.png)
-
 ## Technologies used
 
 - HTML
@@ -33,4 +27,10 @@ click on the link below
 
 - Add color changing function to the keyboard
 - Add timer
-- Add coprehensive list of words to the word bank. As it is right now, adding more then 1000 slows down the processing. 
+- Add coprehensive list of words to the word bank. As it is right now, adding more then 1000 slows down the processing.
+
+## Screenshots
+
+ ![Imgur](https://i.imgur.com/Zq7fgrj.png)
+ ![Imgur](https://i.imgur.com/Zq7fgrj.png)
+ ![Imgur](https://i.imgur.com/NMwUlg9.png)
