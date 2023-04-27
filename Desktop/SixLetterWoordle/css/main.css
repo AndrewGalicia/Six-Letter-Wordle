@@ -10,13 +10,13 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #11042D;    
+    background-color: #000000;    
     color: #d6ff94;
     font-family: 'Press Start 2P';
 }
 
 header {
-    border-bottom: solid #D6FF94;
+    border: solid #D6FF94;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -24,10 +24,12 @@ header {
     font-size: 75px;
     margin-bottom: 10px;
     outline: solid red;
+    text-shadow: 3px 3px 2px  red;  
 }
 
 #error {
     font-size: 25px;
+    text-shadow: 3px 1px 2px  red;
 }
 
 .row {
@@ -38,16 +40,19 @@ header {
 }
 
 .box {
-    background-color: violet;
+    background-color: rgb(241, 220, 241);
     height: 50px;
     width: 50px;
-    border: solid #11042D;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     font-size: 38px;
     font-family: 'Press Start 2P';
+    border: solid red;
+    margin: 1px;
+    text-shadow: 3px 1px 2px  red; 
+    border-radius: 5%;
 }
 
 #keyboard {
@@ -58,15 +63,17 @@ header {
 
 .keys {
     background-color: #7166f2 ;
-    border: blue;
-    border-radius: 10%;
+    border: 2px solid rgb(0, 255, 81);
+    border-radius: 12%;
     margin: 1px;
-    height: 35px;
-    width: 30px;
+    height: 36px;
+    width: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 25px;
+    font-size: 21px;
+    font-family: 'Press Start 2P';
+    text-shadow: 3px 1px 2px  red;  
 }
 
 .keys:hover{
@@ -83,18 +90,18 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    ;
 }
 
 #start {
-    
     height: 100px;
     width: 100px;
     border-radius: 50%;
     background-color: yellow;
-    font-size: 25px;
+    font-size: 15px;
     color: red;
     cursor: pointer;
+    font-family: 'Press Start 2P';
+    border: solid red; 
 }
 
 #start:disabled {
@@ -106,7 +113,7 @@ header {
     border: 0.2vmin solid rgb(199, 56, 173);
     box-shadow: 0 0 4px 4px rgb(199, 56, 173);
     background-color: rgba(72, 0, 138, 0.59);
-    color: yellowgreen
+    color: yellowgreen;
 }
 
 h2 {
@@ -117,6 +124,7 @@ h2 {
     justify-content: center;
     font-family: 'Press Start 2P';
     font-size: 40px;
+    text-shadow: 3px 1px 2px  red;
 }
 
 #button {
@@ -124,14 +132,18 @@ h2 {
     align-items: center;
     justify-content: center;
     padding-top: 10px;
+   
 }
 #button > button {
+    border-radius: 5%;
     margin: 5px;
     color: #D6FF94;
     height: 60px;
     width: 100px;
-    background-color: blueviolet;
+    background-color: rgb(73, 226, 43);
     border: solid red; 
+    font-family: 'Press Start 2P';
+    text-shadow: 3px 1px 2px  red;
 }
 
 #button > button:hover {

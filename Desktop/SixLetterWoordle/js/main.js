@@ -1,5 +1,4 @@
   /*----- constants -----*/
-
 //word bank, all capital letters
 const WORDS = ['AAAAAA','SEARCH', 'ONLINE', 'PEOPLE', 'HEALTH', 'SHOULD', 'SYSTEM', 'POLICY', 'NUMBER', 'PLEASE', 'RIGHTS', 'PUBLIC', 'SCHOOL', 'REVIEW',
 'UNITED', 'CENTER', 'TRAVEL', 'REPORT', 'MEMBER', 'BEFORE', 'HOTELS', 'OFFICE', 'DESIGN', 'POSTED', 'WITHIN', 'STATES', 'FAMILY', 'PRICES', 'SPORTS', 'COUNTY', 'ACCESS',
@@ -15,43 +14,35 @@ let winState    //W or L, located in "h2"
 let playerWord  //Player inputed word. Updated during enterButton event.
 let rowNum      //row number, button 0 - top 5, decreased on succesful enterButton event
 let colNum      //column number 0-5 left to right. resets to zero on succesful enterButton event 
-let boxNum
-  /*----- cached elements  -----*/
-  const startButton = document.getElementById('start'); 
-  const enterButton = document.getElementById('enter');  
-  const clearButton = document.getElementById('clear');  
-  const gameOverEl = document.querySelector('h2');       
-  const errorMessage = document.getElementById('error'); //errors mesasge e.g 'word not on list'
-  const typedWord = [...document.querySelectorAll('.keys')]
-  /*----- event listeners -----*/
+let boxNum      //the invidual box
 
-  enterButton.addEventListener('click', enter); //checks playerWord, winState, resets colNum to zero, lowers rowNum, render
-  startButton.addEventListener('click', init);  //inits game
-  clearButton.addEventListener('click', clear); //backspace button
-  document.getElementById('keyboard').addEventListener('click', type);
+  /*----- cached elements  -----*/
+const startButton = document.getElementById('start'); 
+const enterButton = document.getElementById('enter');  
+const clearButton = document.getElementById('clear');  
+const gameOverEl = document.querySelector('h2');       
+const errorMessage = document.getElementById('error'); //errors mesasge e.g 'word not on list'
+const typedWord = [...document.querySelectorAll('.keys')]
+
+  /*----- event listeners -----*/
+enterButton.addEventListener('click', enter); //checks playerWord, winState, resets colNum to zero, lowers rowNum, render
+startButton.addEventListener('click', init);  //inits game
+clearButton.addEventListener('click', clear); //backspace button
+document.getElementById('keyboard').addEventListener('click', type);
 
   /*----- functions -----*/
-  
 //initialize all states, then call render 
-  function init() {
-    clearBoard();       //resets the board from a previous game
-   
-    winState = null;    
-
-    errorMessage.innerText = null;
-
-    playerWord = '';
-
-    secreWord = randomWord(); //sets the word we are trying to guess;
-
-    rowNum = 5;
-
-    colNum = 0;
-
-    boxNum = rowNum.toString() + colNum.toString()  
-
-    render();
-  }
+function init() {
+  clearBoard();       //resets the board from a previous game
+  winState = null;
+  errorMessage.innerText = null;
+  playerWord = '';
+  secreWord = randomWord(); //sets the word we are trying to guess;
+  rowNum = 5;
+  colNum = 0;
+  boxNum = rowNum.toString() + colNum.toString()  
+  render();
+}
 //Playing the game functions
     //keyboard event to place letter on board
 function type(evt) {
@@ -143,10 +134,11 @@ function renderMessage() {
         gameOverEl.innerText = `${rowNum + 1} guesses left`;
     }
 }
-    //changes colors
+    //changes colors with .1 second delay
 function renderBoard() {
     if (rowNum < 5) { //don't check on first row
-        for (let i = 0; i < 6; i++) {
+        let i = 0;
+        let interval = setInterval(() => {
             playerCha = playerWord[i];
             let prevRowNum = rowNum + 1;
             let altBoxNum = prevRowNum.toString() + i.toString();
@@ -159,7 +151,13 @@ function renderBoard() {
             } else {
                 boxEle.style.backgroundColor = 'gray';
             }
-        }
+
+            i++;
+
+            if (i >= 6) {
+                clearInterval(interval);
+            }
+        }, 80);
     }
 }
     //enables button when winState is not null;
