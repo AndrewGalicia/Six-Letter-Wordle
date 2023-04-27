@@ -14,9 +14,9 @@ At it's core, this game is a guessing game.
 
 ## Screenshots
 
- [Imgur](https://i.imgur.com/Zq7fgrj.png)
- [Imgur](https://i.imgur.com/Zq7fgrj.png)
- [Imgur](https://i.imgur.com/NMwUlg9.png)
+ ![Imgur](https://i.imgur.com/Zq7fgrj.png)
+ ![Imgur](https://i.imgur.com/Zq7fgrj.png)
+ ![Imgur](https://i.imgur.com/NMwUlg9.png)
 
 ## Technologies used
 
