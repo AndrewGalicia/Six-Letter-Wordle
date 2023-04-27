@@ -2,12 +2,14 @@
 
 ## Description
 
-Ms.Wordle is a variation of the popular New York Times own game of Wordle.
+Ms.Wordle is a variation of the popular New York Times owned game of Wordle.
 
 At it's core, this game is a guessing game.
 
 - You have 6 chances to guess a randomly generated six-letter word.
-- Once you insert a word, the colors will chance. If the box color turns orange, the letter is inside the secret word, if it turns red then it is both a letter in the word and in the correct placement.
+- Each guess must be a valid word
+- The color of the box will change to show how close youare to the word.
+- If the box color turns orange, the letter is inside the secret word, if it turns red then you also have the correct placement.
 -If you correctly guess the word in 6 tries, you win, else you lose.
 
 ## Technologies used
