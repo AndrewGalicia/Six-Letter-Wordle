@@ -21,7 +21,7 @@ const startButton = document.getElementById('start');
 const enterButton = document.getElementById('enter');  
 const clearButton = document.getElementById('clear');  
 const gameOverEl = document.querySelector('h2');       
-const errorMessage = document.getElementById('error'); //errors mesasge e.g 'word not on list'
+const errorMessage = document.getElementById('error-message'); //errors mesasge e.g 'word not on list'
 const typedWord = [...document.querySelectorAll('.keys')]
 
   /*----- event listeners -----*/
@@ -62,6 +62,7 @@ function enter() {
     if (colNum === 6 && checkWord()) {
         rowNum -= 1;
         colNum = 0;
+        errorMessage.innerText = null;
         checkWin();
     } else if (colNum < 6) {
         errorMessage.innerText = 'Not enough letters!!';
