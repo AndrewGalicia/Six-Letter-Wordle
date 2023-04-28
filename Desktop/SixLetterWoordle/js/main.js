@@ -6,7 +6,7 @@ const WORDS = ['AAAAAA','SEARCH', 'ONLINE', 'PEOPLE', 'HEALTH', 'SHOULD', 'SYSTE
 'PHOTOS', 'THREAD', 'MARKET', 'REALLY', 'ACTION', 'SERIES', 'SECOND', 'FORUMS', 'BETTER', 'FRIEND', 'SERVER', 'ISSUES', 'STREET', 'THINGS', 'PERSON',
 'MOBILE', 'OFFERS', 'RECENT', 'STORES', 'MEMORY', 'SOCIAL', 'AUGUST', 'CREATE', 'SINGLE', 'LATEST', 'STATUS', 'BROWSE', 'SELLER',
 'ALWAYS', 'RESULT', 'GROUPS', 'MAKING', 'FUTURE', 'LONDON', 'BECOME', 'GARDEN', 'LISTED', 'ENERGY', 'IMAGES', 'NOTICE', 'OTHERS', 'FORMAT',
-'MONTHS', 'SAFETY', 'HAVING', 'COMMON', 'LIVING', 'CALLED', 'PERIOD', 'WINDOW', 'FRANCE', 'REGION', 'ISLAND', 'RECORD', 'DIRECT']
+'MONTHS', 'SAFETY', 'HAVING', 'COMMON', 'LIVING', 'CALLED', 'PERIOD', 'WINDOW', 'FRANCE', 'REGION', 'ISLAND', 'RECORD', 'DIRECT', 'ZZZZZZ']
 
   /*----- state variables -----*/
 let secreWord   //The answer, created using a random word generator
@@ -127,9 +127,9 @@ function render() {
     //changes message depending on winState
 function renderMessage() {
     if (winState === 'w') {
-        gameOverEl.innerText = `You Win!`; 
+        gameOverEl.innerText = `YOU WIN!`; 
     } else if (winState === 'l') {
-        gameOverEl.innerText = `You Lose`;
+        gameOverEl.innerText = `YOU LOSE!`;
     } else {
         gameOverEl.innerText = `${rowNum + 1} guesses left`;
     }
@@ -138,12 +138,12 @@ function renderMessage() {
 function renderBoard() {
     if (rowNum < 5) { //don't check on first row
         let i = 0;
-        let interval = setInterval(() => {
+        let interval = setInterval(() => {//set delay to each iterations
             playerCha = playerWord[i];
             let prevRowNum = rowNum + 1;
             let altBoxNum = prevRowNum.toString() + i.toString();
             boxEle = document.getElementById(`${altBoxNum}`);
-
+            //for each iteration, changes the color of the box depending on the word
             if (secreWord.includes(playerCha) && playerCha === secreWord[i]) {
                 boxEle.style.backgroundColor = 'red';
             } else if (secreWord.includes(playerCha)) {

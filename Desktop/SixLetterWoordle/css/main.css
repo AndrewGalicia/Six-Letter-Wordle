@@ -27,11 +27,6 @@ header {
     text-shadow: 3px 3px 2px  red;  
 }
 
-#error {
-    font-size: 25px;
-    text-shadow: 3px 1px 2px  red;
-}
-
 .row {
     display: flex;
     font-family: 'Press Start 2P';
@@ -51,14 +46,8 @@ header {
     font-family: 'Press Start 2P';
     border: solid red;
     margin: 1px;
-    text-shadow: 3px 1px 2px  red; 
+    text-shadow: 3px 1px 3px  red; 
     border-radius: 5%;
-}
-
-#keyboard {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .keys {
@@ -85,11 +74,26 @@ header {
     border: solid red; 
     cursor: pointer;
 }
-
-.rules {
+#win-state-message {
+    margin-top: -50px;
+    padding-top: 0px ;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P';
+    font-size: 40px;
+    text-shadow: 3px 1px 2px  red;
+}
+
+#error-message {
+    font-size: 25px;
+    text-shadow: 3px 1px 2px  red;
+}
+
+#keyboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #start {
@@ -114,17 +118,6 @@ header {
     box-shadow: 0 0 4px 4px rgb(199, 56, 173);
     background-color: rgba(72, 0, 138, 0.59);
     color: yellowgreen;
-}
-
-h2 {
-    margin-top: -50px;
-    padding-top: 0px ;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Press Start 2P';
-    font-size: 40px;
-    text-shadow: 3px 1px 2px  red;
 }
 
 #button {
